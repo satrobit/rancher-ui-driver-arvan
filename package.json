@@ -1,0 +1,38 @@
+{
+  "name": "ui-driver-arvan",
+  "version": "0.0.1",
+  "description": "Rancher UI driver for the ArvanCloud docker machine driver",
+  "repository": {
+    "type": "git",
+    "url": "git+http://github.com/satrobit/rancher-ui-driver-arvan.git"
+  },
+  "author": "Amir Keshavarz",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "http://github.com/satrobit/rancher-ui-driver-arvan/issues"
+  },
+  "scripts": {
+    "start": "gulp server",
+    "clean": "gulp clean",
+    "build": "gulp build"
+  },
+  "homepage": "http://github.com/satrobit/rancher-ui-driver-arvan#readme",
+  "devDependencies": {
+    "@babel/core": "^7.7.5",
+    "@babel/preset-env": "^7.7.6",
+    "babel-plugin-add-module-exports": "^1.0.2",
+    "babel-plugin-transform-es2015-modules-amd": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
+    "gulp": "4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-clean": "0.4.0",
+    "gulp-concat": "2.6.1",
+    "gulp-connect": "5.7.0",
+    "gulp-jshint": "2.1.0",
+    "gulp-replace": "1.0.0",
+    "gulp-sourcemaps": "2.6.5",
+    "jshint": "2.10.3",
+    "replace-string": "^3.0.0",
+    "yargs": "15.0.2"
+  }
+}

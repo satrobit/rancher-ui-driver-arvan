@@ -1,0 +1,99 @@
+<section class="horizontal-form">
+  {{#if needAPIToken}}
+  <form>
+    <div class="over-hr r-mb20">
+      <span>Account Access</span>
+    </div>
+    <div class="row form-group">
+      <div class="col-md-2">
+        <label class="form-control-static">API Token*</label>
+      </div>
+      <div class="col-md-10">
+        {{input type="password" value=model.arvanConfig.apiToken classNames="form-control" placeholder="Your ArvanCloud API Token"}}
+        <p class="help-block">You can create an API Token in ArvanCloud panel. <a href="https://npanel.arvancloud.com/profile/api-keys" target="_blank">Click here to create one</a></p>
+      </div>
+    </div>
+    {{top-errors errors=errors}}
+    <div class="footer-actions">
+      {{#if gettingRegions}}
+      <button class="btn bg-primary btn-disabled">
+        <i class="icon icon-spinner icon-spin"></i> {{t 'generic.loading'}}</button>
+      {{else}}
+      <button {{action "getRegions" }} class="btn bg-primary" disabled={{not model.arvanConfig.apiToken}}> Authenticate</button>
+      {{/if}}
+      <button {{action "cancel"}} class="btn bg-transparent">{{t 'generic.cancel'}}</button>
+    </div>
+  </form>
+  {{else}}
+  <div class="container-fluid">
+    <div class="over-hr">
+      <span>{{templateOptionsTitle}}</span>
+    </div>
+    <div class="over-hr r-mt20 r-mb20">
+      <span>Settings</span>
+    </div>
+    {{#if regions}}
+    <form>
+    <div class="row form-group">
+      <div class="col-md-2">
+        <label class="form-control-static">Region</label>
+      </div>
+      <div class="col-md-10">
+        <select class="form-control" onchange={{action (mut model.arvanConfig.region) value="target.value" }}>
+          {{#each regions as |region|}}
+            <option value={{region.code}} selected={{eq model.arvanConfig.region region.code}}>{{region.country}} - {{region.city}} - {{region.dc}} ({{region.code}})</option>
+          {{/each}}
+        </select>
+      </div>
+    </div>
+    {{top-errors errors=errors}}
+    <div class="footer-actions">
+      {{#if gettingData}}
+      <button class="btn bg-primary btn-disabled">
+        <i class="icon icon-spinner icon-spin"></i> {{t 'generic.loading'}}</button>
+      {{else}}
+      <button {{action "getData" }} class="btn bg-primary" disabled={{not model.arvanConfig.region}}> Set Region</button>
+      {{/if}}
+      <button {{action "cancel"}} class="btn bg-transparent">{{t 'generic.cancel'}}</button>
+    </div>
+    </form>
+    {{/if}}
+    {{#if images}}
+    <div class="row form-group">
+      <div class="col-md-2">
+        <label class="form-control-static">Image</label>
+      </div>
+      <div class="col-md-4">
+        <select class="form-control" onchange={{action (mut model.arvanConfig.image) value="target.value" }}>
+          {{#each images as |image|}}
+            <option value={{image.id}} selected={{eq model.arvanConfig.image image.id}}>{{image.name}}</option>
+          {{/each}}
+        </select>
+      </div>
+      <div class="col-md-2">
+        <label class="form-control-static">Flavor</label>
+      </div>
+      <div class="col-md-4">
+        <select class="form-control" onchange={{action (mut model.arvanConfig.serverFlavor) value="target.value" }}>
+          {{#each flavors as |flavor|}}
+            <option value={{flavor.id}} selected={{eq model.arvanConfig.serverFlavor flavor.name}}>{{flavor.name}} - {{flavor.id}}</option>
+          {{/each}}
+        </select>
+      </div>
+    </div>
+ 
+     {{!-- This following contains the Name, Labels and Engine Options fields --}}
+     {{form-name-description model=model nameRequired=true}}
+     {{form-user-labels initialLabels=labelResource.labels setLabels=(action 'setLabels') expandAll=expandAll expand=(action expandFn) }}
+     {{form-engine-opts machine=model showEngineUrl=showEngineUrl }}
+     {{!-- This component shows errors produced by validate() in the component --}}
+     {{top-errors errors=errors}}
+     {{!-- This component shows the Create and Cancel buttons --}}
+     {{save-cancel save="save" cancel="cancel"}}
+
+      {{/if}}
+
+  </div>
+ 
+  {{/if}}
+</section>
