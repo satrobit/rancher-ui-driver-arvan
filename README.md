@@ -20,3 +20,16 @@ Rancher UI driver for the [ArvanCloud]([https://www.arvancloud.com/](https://www
 ![Node template auth](docs/node_template_auth.png)
 ![Node template image and flavor](docs/node_template_image_flavor.png)
 ![Adding cluster](docs/add_cluster.png)
+## Development
+
+This package contains a small web-server that will serve up the ArvanCloud driver UI at `http://localhost:3000/component.js`.  You can run this while developing and point the Rancher settings there.
+* `npm start`
+* The compiled files are viewable at http://localhost:3000.
+
+## Building
+
+For other users to see your driver, you need to build it and host the output on a server accessible from their browsers.
+
+* `npm run build`
+* Copy the contents of the `dist` directory onto a webserver.
+  * If your Rancher is configured to use HA or SSL, the server must also be available via HTTPS.
