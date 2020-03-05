@@ -1,7 +1,7 @@
 
 # Rancher UI drvier for ArvanCloud
 
-Rancher UI driver for the [ArvanCloud]([https://www.arvancloud.com/](https://www.arvancloud.com/)).
+Rancher UI driver for the [ArvanCloud](https://www.arvancloud.com).
 
 ## Usage
 
