@@ -116,9 +116,14 @@ export default Ember.Component.extend(NodeDriver, {
         let images = [];
         let flavors = [];
 
-        responses[0].data.distributions.forEach(function(dist) {
-          dist.images.forEach(function(image) {
-            images.push({id: image.id, distribution_name: image.distribution_name, name: image.name})
+        responses[0].data.distributions.forEach(function(dist, dist_index) {
+          dist.images.forEach(function(image, image_index) {
+            images.push({
+              id: image.id,
+              distribution_name: image.distribution_name,
+              name: image.name,
+              default: (!dist_index) && (!image_index)
+            })
           })
         })
 
