@@ -118,7 +118,7 @@ export default Ember.Component.extend(NodeDriver, {
 
         responses[0].data.distributions.forEach(function(dist) {
           dist.images.forEach(function(image) {
-            images.push({id: image.id, name: image.distribution_name + ' ' + image.name})
+            images.push({id: image.id, distribution_name: image.distribution_name, name: image.name})
           })
         })
 

@@ -66,7 +66,7 @@
       <div class="col-md-4">
         <select class="form-control" onchange={{action (mut model.arvanConfig.image) value="target.value" }}>
           {{#each images as |image|}}
-            <option value={{image.id}} selected={{eq model.arvanConfig.image image.id}}>{{image.name}}</option>
+            <option value={{image.id}} selected={{eq model.arvanConfig.image image.id}}>{{image.distribution_name}} {{image.name}}</option>
           {{/each}}
         </select>
       </div>
